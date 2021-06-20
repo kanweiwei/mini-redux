@@ -40,3 +40,9 @@ store.dispatch((dispatch) => {
     });
   }, 1000);
 });
+
+store.dispatch({
+  type: "update_msg",
+  payload: "hello world",
+});
+
