@@ -2,6 +2,7 @@ const createStore = require("../createStore.js");
 const combineReducers = require("../combineReducers.js");
 const applyMiddleware = require("../applyMiddleware.js");
 const thunk = require("../redux-thunk.js");
+const logger = require("../redux-logger.js");
 
 function reducer(
   state = {
@@ -22,7 +23,7 @@ function reducer(
 
 const store = createStore(reducer);
 
-applyMiddleware(thunk)(store);
+applyMiddleware(thunk, logger)(store);
 
 let date = +new Date();
 
@@ -45,4 +46,3 @@ store.dispatch({
   type: "update_msg",
   payload: "hello world",
 });
-

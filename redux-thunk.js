@@ -1,10 +1,10 @@
-function thunk({ getState }) {
-  return function (dispatch) {
+function thunk({ dispatch, getState }) {
+  return function (next) {
     return function (action) {
       if (typeof action === "function") {
-        action(dispatch);
+        action(dispatch, getState);
       } else {
-        dispatch(action);
+        next(action);
       }
     };
   };
